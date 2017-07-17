@@ -1,9 +1,13 @@
+import copy
 
 class Stack:
 
     def __init__(self, initial=[]):
         # private field
         self.__items = initial
+
+    def get_items(self):
+        return copy.deepcopy(self.__items)
 
     def isEmpty(self):
         #return len(self.__items) == 0
@@ -38,7 +42,7 @@ class Stack:
 
 #this works only when stack.py will be run as script file
 if __name__ == '__main__':
-    stacky = Stack([123,"hyi",True])
+    stacky = Stack([123,"lol",True])
     print stacky
 
     add_stacky = Stack([1,2,3]) + Stack([True, False])
