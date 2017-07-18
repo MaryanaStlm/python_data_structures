@@ -29,17 +29,18 @@ class TestMyStack(unittest.TestCase):
         self.assertEqual(stack.get_items(), [0,1,2,3,4,5,6,7,8,9])
         self.assertEqual(stack.size(), 10)
 
-    '''
+    def test_pop(self):
+        stack = Stack([1, 2, 3])
+        self.assertEqual(stack.pop(), 3)
 
     def test_peek(self):
-        self.assertEqual(s.peek(), 1)
+        stack = Stack([1, 'Maryana', True])
+        #self.assertTrue(stack.peek())
+        self.assertEqual(stack.peek(), True)
 
-    def test_stack_size(self):
-        self.assertEqual(s.size(), 1)
-
-    def test_pop(self):
-        self.assertEqual(s.pop(), 3)
-    '''
+    def test_size(self):
+        stack = Stack([1, 2])
+        self.assertEqual(stack.size(), 2)
 	
 if __name__ == '__main__':
     unittest.main()
