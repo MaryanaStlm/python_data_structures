@@ -1,43 +1,26 @@
-import unittest 
+import copy
 
 class Queue:
-    def __init__(self):
-        self.items = []
+    def __init__(self, initial = []):
+        self.__items = initial
+
+    def get_items(self):
+        return copy.deepcopy(self.__items)
 
     def isEmpty(self):
-        return self.items == []
+        return self.__items == []
 
     def enqueue(self, item):
-        self.items.insert(0,item)
+        self.__items.insert(0,item)
 
     def dequeue(self):
-        return self.items.pop()
+        return self.__items.pop()
 
     def size(self):
-        return len(self.items)
-
-
-q = Queue()
-for i in range(10):
-	q.enqueue(i)
-
-
-
-
-class TestMyQueue(unittest.TestCase):
-    unittest.TestCase
-    '''
-    def test_is_empty(self):
-        self.assertTrue(q.isEmpty())'''
-
-    def test_size(self):
-        self.assertEqual(q.size(), 10)
-
-
-    def test_dequeue(self):
-        self.assertEqual(q.dequeue(), 0)
-
-
+        return len(self.__items)
 
 if __name__ == '__main__':
-    unittest.main()
+    q = Queue([1, 2, 3])
+    print q.get_items()
+
+
