@@ -22,5 +22,7 @@ class Queue:
 if __name__ == '__main__':
     q = Queue([1, 2, 3])
     print q.get_items()
+    q.enqueue(4)
+
 
 
