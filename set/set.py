@@ -21,7 +21,8 @@ class Set:
         for i in self.__items:
             if i in other.__items:
                 intersection_list.append(i)
-        return Set(intersection_list)
+        res = Set(intersection_list)
+        return res
 
     #difference
     #does not working
@@ -43,6 +44,6 @@ class Set:
                 subset = False
         return subset
 
-if __name__ == '__main__':
+#if __name__ == '__main__':
 
 
