@@ -20,9 +20,6 @@ class LinkedList(object):
     def __init__(self):
         self.head = None
 
-    def is_empty(self):
-        return self.head == None
-
     def get_length(self):
         count = 0
         node = self.head
@@ -30,6 +27,23 @@ class LinkedList(object):
             count += 1
             node = node.next
         return count
+
+    def __eq__(self, other):
+        if self.get_length() != other.get_length():
+            return False
+        else:
+            node1 = self.head
+            node2 = other.head
+            while node1:
+                if node1.data != node2.data:
+                    return False
+                else:
+                    node1 = node1.next
+                    node2 = node2.next
+        return True
+
+    def is_empty(self):
+        return self.head == None
 
     def is_contain(self, item):
         node = self.head
@@ -123,5 +137,3 @@ class LinkedList(object):
         while node:
             print node.data
             node = node.next
-
-
