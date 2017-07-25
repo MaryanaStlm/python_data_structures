@@ -82,12 +82,41 @@ class TestMyLinkedList(unittest.TestCase):
         self.assertEqual(ll.get_items(), [0, 1, 3, 4])
 
     def test_reverse(self):
-        ll = LinkedList()
+        l1 = LinkedList()
         for i in range(5):
-            ll.push_back(i)
-        ll.reverse()
+            l1.push_back(i)
+        l1.reverse()
 
-        self.assertEqual(ll.get_items(), [4, 3, 2, 1, 0])
+        self.assertEqual(l1.get_items(), [4, 3, 2, 1, 0])
+
+        l2 = LinkedList()
+        l2.push_back(2)
+        l2.reverse()
+
+        self.assertEqual(l2.get_items(), [2])
+
+        l3 = LinkedList()
+        for i in range(2):
+            l3.push_back(i)
+        l3.reverse()
+
+        self.assertEqual(l3.get_items(), [1, 0])
+
+    def test_equal(self):
+        l1 = LinkedList()
+        l2 = LinkedList()
+        l3 = LinkedList()
+
+        for i in range(5):
+            l1.push_back(i)
+            l2.push_back(i)
+
+        for i in range(2, 7):
+            l3.push_back(i)
+
+        self.assertTrue(l1 == l2)
+        self.assertFalse(l1 == l3)
+
 
 
 if __name__ == '__main__':
