@@ -4,9 +4,6 @@ class Node(object):
         self.data = data
         self.next = next_node
 
-    def get_data(self):
-        return self.data
-
     def __str__(self):
         return str(self.data)
 
