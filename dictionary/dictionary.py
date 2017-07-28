@@ -1,22 +1,18 @@
 class Dictionary(object):
-    # TODO: ensure that keys in self.dict are unique
 
     def __init__(self, list_of_tuples=[]):
         self.dict = []
 
-        if len(list_of_tuples) > 0:
+        unique_list = []
+        key_list = []
 
-            for tpl in list_of_tuples:
-                if len(tpl) != 2:
-                    raise Exception('wrong length of tuple in list')
-
-                key, val = tpl
-
-
-                if key is not None and val is not None:
-                    self.dict.append((key, val))
-                else:
-                    raise Exception('you have to pass list of two element tuples')
+        for tpl in list_of_tuples:
+            if len(tpl) != 2:
+                raise Exception('Dictionary element has only key and value')
+            key, val = tpl
+            if key not in key_list:
+                self.dict.append((key, val))
+                key_list.append(key)
 
     def items(self):
         return self.dict
@@ -33,21 +29,23 @@ class Dictionary(object):
             values.append(val)
         return values
 
-    def update(self, key, value):
-        self.dict.append((key, value))
+    def update(self, key_to_append, value_to_append):
+        if key_to_append in self.keys():
+            raise Exseption('this key is already in dict')
+        else:
+            self.dict.append((key_to_append, value_to_append))
 
     def get(self, key_to_find):
         for key, val in self.dict:
             if key_to_find == key:
                 return val
 
-    def setdefault(self, key_to_find):
+    def setdefault(self, key_to_find, default = None):
         for key, val in self.dict:
             if key_to_find == key:
                 return val
         else:
-            val = None
-            self.update(key_to_find, val)
+            self.update(key_to_find, default)
 
     def pop(self, key_to_del):
         for tpl in self.dict:
@@ -55,5 +53,20 @@ class Dictionary(object):
             if key_to_del == key:
                 self.dict.remove(tpl)
                 return val
+
+    def __getitem__(self, key_to_find):
+        for key, val in self.dict:
+            if key_to_find == key:
+                return val
+        raise Exception('No value with this key')
+
+    def __setitem__(self, key_to_find, value_to_find):
+        if key_to_find not in self.keys():
+            self.dict.append((key_to_find, value_to_find))
+        else:
+            for key, val in self.dict:
+                if key_to_find == key:
+                    self.dict.remove((key, val))
+                    self.dict.append((key_to_find, value_to_find))
 
 
