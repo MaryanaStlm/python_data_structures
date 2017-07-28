@@ -51,6 +51,25 @@ class TestMyDictionary(unittest.TestCase):
         self.assertEqual(d1.pop(1), 'first')
         self.assertEqual(d1.pop(3), 'third')
 
+    def test_getitem(self):
+        d1 = Dictionary([(1, 'first'), (2, 'second'), (3, 'third')])
+
+        self.assertEqual(d1[2], 'second')
+        self.assertEqual(d1[3], 'third')
+
+    def test_setitem(self):
+        d1 = Dictionary([(1, 'first'), (2, 'second'), (3, 'third')])
+        d1[4] = 'fourth'
+
+        self.assertEqual(d1.items(), [(1, 'first'), (2, 'second'), (3, 'third'), (4, 'fourth')])
+
+        d1[1] = 'one'
+        self.assertEqual(d1.items(),  [(2, 'second'), (3, 'third'), (4, 'fourth'), (1, 'one')])
+
+
+
+
+
 
 if __name__ == '__main__':
     unittest.main()
